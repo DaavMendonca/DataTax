@@ -25,7 +25,7 @@ def checarduplicidade(cnpj, competencia):
             + competencia
             + ";' from sqlite_master where type = 'table' and tbl_name like 'EFD_%';"
         )
-        print(sql)
+        
         count = cursor.execute(sql)
 
         for rows in cursor:
