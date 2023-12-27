@@ -1,7 +1,6 @@
 import sqlite3
 import datetime
 
-
 #Verifica se ja existe arquivo importado com a compentencia / cnpj declarante
 def checarduplicidade(cnpj, competencia):
     list_delete = []
@@ -30,7 +29,7 @@ def checarduplicidade(cnpj, competencia):
 
         for rows in cursor:
             delete.execute(rows[0])
-
+            
         sqliteConnection.commit()
     sqliteConnection.close()
 
