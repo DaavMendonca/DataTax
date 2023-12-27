@@ -23,8 +23,9 @@ def checarduplicidade(cnpj, competencia):
             + cnpj
             + " and COMPETENCIA = "
             + competencia
-            + ";' from sqlite_master where type = 'table';"
+            + ";' from sqlite_master where type = 'table' and tbl_name like 'EFD_%';"
         )
+        print(sql)
         count = cursor.execute(sql)
 
         for rows in cursor:
@@ -86,7 +87,6 @@ def lerarquivo(caminho):
             if tabela in registrospai:
                 idnotapai = lin
 
-            # print(tabela)
             StrSQL = (
                 StrSQL
                 + "INSERT INTO EFD_"
@@ -107,8 +107,9 @@ def lerarquivo(caminho):
 
             StrSQL = StrSQL + "'" + colunas[i + 1] + "');\n"
             lin = lin + 1
+            #print(StrSQL)
 
     insert(StrSQL)
 
 #Chama a função principal
-lerarquivo("SpedFiscal.txt")
+lerarquivo("Arquivos/SpedFiscal.txt")
